@@ -4,17 +4,17 @@
 package org.jooq.mcve.java;
 
 
-import org.jooq.mcve.java.tables.Test;
+import org.jooq.mcve.java.tables.Mcvetest;
 
 
 /**
- * Convenience access to all tables in MCVE.
+ * Convenience access to all tables in DEVSB.
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Tables {
 
     /**
-     * The table <code>MCVE.TEST</code>.
+     * The table <code>DEVSB.MCVETEST</code>.
      */
-    public static final Test TEST = Test.TEST;
+    public static final Mcvetest MCVETEST = Mcvetest.MCVETEST;
 }
