@@ -1,0 +1,161 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.jooq</groupId>
+    <artifactId>jooq-mcve</artifactId>
+    <version>1.0</version>
+    <name>jOOQ MCVE</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- TODO: Change your jOOQ edition and version here -->
+        <org.jooq.groupId>org.jooq.trial-java-8</org.jooq.groupId>
+        <org.jooq.version>3.14.8</org.jooq.version>
+
+        <!-- TODO: Change the database driver configuration here and also in AbstractTest for the tests -->
+        <ojdbc.version>21.1.0.0</ojdbc.version>
+
+        <!-- get connection infos from -D System properties as I can't include this info in the
+        public repo:
+        -Ddb.url=jdbc:oracle:thin:@yourconninfo
+        -Ddb.username=youruser (best upper case)
+        -Ddb.password
+        -->
+        <jooq.dateAsTimestamp>true</jooq.dateAsTimestamp>
+        <jooq.database.name>org.jooq.meta.oracle.OracleDatabase</jooq.database.name>
+
+        <java.version>11</java.version>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc11</artifactId>
+            <version>${ojdbc.version}</version>
+        </dependency>
+
+        <!-- Database access -->
+        <dependency>
+            <groupId>${org.jooq.groupId}</groupId>
+            <artifactId>jooq</artifactId>
+            <version>${org.jooq.version}</version>
+        </dependency>
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>${org.jooq.groupId}</groupId>
+                    <artifactId>jooq-codegen-maven</artifactId>
+                    <version>${org.jooq.version}</version>
+
+                    <configuration>
+                        <jdbc>
+                            <url>${db.url}</url>
+                            <user>${db.username}</user>
+                            <password>${db.password}</password>
+                        </jdbc>
+                        <generator>
+                            <database>
+                                <name>${jooq.database.name}</name>
+                                <dateAsTimestamp>${jooq.dateAsTimestamp}</dateAsTimestamp>
+                                <includeInvisibleColumns>false</includeInvisibleColumns>
+                                <includes>
+                                    ${db.username}.MCVETEST
+                                    | ${db.username}.TYPES.*
+                                    | ${db.username}.PROC_USE_ASSOCIATIVEARRAYS.*
+                                </includes>
+                                <schemata>
+                                    <schema>
+                                        <inputSchema>${db.username}</inputSchema>
+                                    </schema>
+                                </schemata>
+                            </database>
+                        </generator>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>5.2.1</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>migrate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <url>${db.url}</url>
+                    <user>${db.username}</user>
+                    <password>${db.password}</password>
+                    <locations>
+                        <location>filesystem:src/main/resources/db/migration</location>
+                    </locations>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>${org.jooq.groupId}</groupId>
+                <artifactId>jooq-codegen-maven</artifactId>
+                <version>${org.jooq.version}</version>
+
+                <executions>
+
+                    <execution>
+                        <id>generate-java</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+
+                        <configuration>
+                            <generator>
+                                <target>
+                                    <packageName>org.jooq.mcve.java</packageName>
+                                    <directory>src/main/java</directory>
+                                </target>
+                            </generator>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

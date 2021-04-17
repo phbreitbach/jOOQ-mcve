@@ -21,7 +21,6 @@ public class JavaTest extends AbstractTest {
 
     @Test
     public void arrayAsInParamTest() throws SQLException {
-
         ArrayAsInParam arrayAsInParamRoutine = new ArrayAsInParam();
         TAssociativearrayRecord trecs /* ;-D */ = new TAssociativearrayRecord();
         trecs.add("Should come forth in PL/SQL");

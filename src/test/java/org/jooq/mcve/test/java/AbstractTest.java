@@ -15,7 +15,11 @@ public abstract class AbstractTest {
 
     @Before
     public void setup() throws Exception {
-        connection = DriverManager.getConnection("jdbc:h2:~/mcve", "sa", "");
+
+        String user = System.getProperty("db.username");
+        String pw = System.getProperty("db.password");
+        String url = System.getProperty("db.url");
+        connection = DriverManager.getConnection(url, user, pw);
         ctx = DSL.using(connection);
     }
 
