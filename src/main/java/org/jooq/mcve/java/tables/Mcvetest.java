@@ -6,8 +6,6 @@ package org.jooq.mcve.java.tables;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
 
 import org.jooq.Field;
 import org.jooq.ForeignKey;
@@ -22,8 +20,8 @@ import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
 import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
-import org.jooq.mcve.java.Devsb;
 import org.jooq.mcve.java.Keys;
+import org.jooq.mcve.java.Mcve;
 import org.jooq.mcve.java.tables.records.McvetestRecord;
 
 
@@ -36,7 +34,7 @@ public class Mcvetest extends TableImpl<McvetestRecord> {
     private static final long serialVersionUID = 1L;
 
     /**
-     * The reference instance of <code>DEVSB.MCVETEST</code>
+     * The reference instance of <code>MCVE.MCVETEST</code>
      */
     public static final Mcvetest MCVETEST = new Mcvetest();
 
@@ -49,22 +47,22 @@ public class Mcvetest extends TableImpl<McvetestRecord> {
     }
 
     /**
-     * The column <code>DEVSB.MCVETEST.ID</code>.
+     * The column <code>MCVE.MCVETEST.ID</code>.
      */
     public final TableField<McvetestRecord, BigDecimal> ID = createField(DSL.name("ID"), SQLDataType.NUMERIC.nullable(false), this, "");
 
     /**
-     * The column <code>DEVSB.MCVETEST.VALUE</code>.
+     * The column <code>MCVE.MCVETEST.VALUE</code>.
      */
     public final TableField<McvetestRecord, String> VALUE = createField(DSL.name("VALUE"), SQLDataType.VARCHAR(256), this, "");
 
     /**
-     * The column <code>DEVSB.MCVETEST.FEHLERTEXT</code>.
+     * The column <code>MCVE.MCVETEST.FEHLERTEXT</code>.
      */
     public final TableField<McvetestRecord, String> FEHLERTEXT = createField(DSL.name("FEHLERTEXT"), SQLDataType.VARCHAR(240), this, "");
 
     /**
-     * The column <code>DEVSB.MCVETEST.SOMEDATE</code>.
+     * The column <code>MCVE.MCVETEST.SOMEDATE</code>.
      */
     public final TableField<McvetestRecord, LocalDate> SOMEDATE = createField(DSL.name("SOMEDATE"), SQLDataType.LOCALDATE, this, "");
 
@@ -77,21 +75,21 @@ public class Mcvetest extends TableImpl<McvetestRecord> {
     }
 
     /**
-     * Create an aliased <code>DEVSB.MCVETEST</code> table reference
+     * Create an aliased <code>MCVE.MCVETEST</code> table reference
      */
     public Mcvetest(String alias) {
         this(DSL.name(alias), MCVETEST);
     }
 
     /**
-     * Create an aliased <code>DEVSB.MCVETEST</code> table reference
+     * Create an aliased <code>MCVE.MCVETEST</code> table reference
      */
     public Mcvetest(Name alias) {
         this(alias, MCVETEST);
     }
 
     /**
-     * Create a <code>DEVSB.MCVETEST</code> table reference
+     * Create a <code>MCVE.MCVETEST</code> table reference
      */
     public Mcvetest() {
         this(DSL.name("MCVETEST"), null);
@@ -103,17 +101,12 @@ public class Mcvetest extends TableImpl<McvetestRecord> {
 
     @Override
     public Schema getSchema() {
-        return Devsb.DEVSB;
+        return aliased() ? null : Mcve.MCVE;
     }
 
     @Override
     public UniqueKey<McvetestRecord> getPrimaryKey() {
         return Keys.PK_TEST;
-    }
-
-    @Override
-    public List<UniqueKey<McvetestRecord>> getKeys() {
-        return Arrays.<UniqueKey<McvetestRecord>>asList(Keys.PK_TEST);
     }
 
     @Override

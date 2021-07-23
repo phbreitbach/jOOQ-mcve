@@ -8,13 +8,13 @@ import org.jooq.mcve.java.tables.Mcvetest;
 
 
 /**
- * Convenience access to all tables in DEVSB.
+ * Convenience access to all tables in MCVE.
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Tables {
 
     /**
-     * The table <code>DEVSB.MCVETEST</code>.
+     * The table <code>MCVE.MCVETEST</code>.
      */
     public static final Mcvetest MCVETEST = Mcvetest.MCVETEST;
 }

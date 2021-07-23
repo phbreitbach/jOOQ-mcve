@@ -5,7 +5,7 @@ package org.jooq.mcve.java.packages;
 
 
 import org.jooq.impl.PackageImpl;
-import org.jooq.mcve.java.Devsb;
+import org.jooq.mcve.java.Mcve;
 
 
 /**
@@ -17,7 +17,7 @@ public class Types extends PackageImpl {
     private static final long serialVersionUID = 1L;
 
     /**
-     * The reference instance of <code>DEVSB.TYPES</code>
+     * The reference instance of <code>MCVE.TYPES</code>
      */
     public static final Types TYPES = new Types();
 
@@ -25,6 +25,6 @@ public class Types extends PackageImpl {
      * No further instances allowed
      */
     private Types() {
-        super("TYPES", Devsb.DEVSB);
+        super("TYPES", Mcve.MCVE);
     }
 }

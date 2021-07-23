@@ -24,56 +24,56 @@ public class McvetestRecord extends UpdatableRecordImpl<McvetestRecord> implemen
     private static final long serialVersionUID = 1L;
 
     /**
-     * Setter for <code>DEVSB.MCVETEST.ID</code>.
+     * Setter for <code>MCVE.MCVETEST.ID</code>.
      */
     public void setId(BigDecimal value) {
         set(0, value);
     }
 
     /**
-     * Getter for <code>DEVSB.MCVETEST.ID</code>.
+     * Getter for <code>MCVE.MCVETEST.ID</code>.
      */
     public BigDecimal getId() {
         return (BigDecimal) get(0);
     }
 
     /**
-     * Setter for <code>DEVSB.MCVETEST.VALUE</code>.
+     * Setter for <code>MCVE.MCVETEST.VALUE</code>.
      */
     public void setValue(String value) {
         set(1, value);
     }
 
     /**
-     * Getter for <code>DEVSB.MCVETEST.VALUE</code>.
+     * Getter for <code>MCVE.MCVETEST.VALUE</code>.
      */
     public String getValue() {
         return (String) get(1);
     }
 
     /**
-     * Setter for <code>DEVSB.MCVETEST.FEHLERTEXT</code>.
+     * Setter for <code>MCVE.MCVETEST.FEHLERTEXT</code>.
      */
     public void setFehlertext(String value) {
         set(2, value);
     }
 
     /**
-     * Getter for <code>DEVSB.MCVETEST.FEHLERTEXT</code>.
+     * Getter for <code>MCVE.MCVETEST.FEHLERTEXT</code>.
      */
     public String getFehlertext() {
         return (String) get(2);
     }
 
     /**
-     * Setter for <code>DEVSB.MCVETEST.SOMEDATE</code>.
+     * Setter for <code>MCVE.MCVETEST.SOMEDATE</code>.
      */
     public void setSomedate(LocalDate value) {
         set(3, value);
     }
 
     /**
-     * Getter for <code>DEVSB.MCVETEST.SOMEDATE</code>.
+     * Getter for <code>MCVE.MCVETEST.SOMEDATE</code>.
      */
     public LocalDate getSomedate() {
         return (LocalDate) get(3);

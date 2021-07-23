@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 import org.jooq.Configuration;
 import org.jooq.impl.PackageImpl;
-import org.jooq.mcve.java.Devsb;
+import org.jooq.mcve.java.Mcve;
 import org.jooq.mcve.java.packages.proc_use_associativearrays.ArrayAsInParam;
 import org.jooq.mcve.java.packages.proc_use_associativearrays.ArrayAsInParamRow;
 import org.jooq.mcve.java.packages.proc_use_associativearrays.ArrayAsInoutNocopyParam;
@@ -21,7 +21,8 @@ import org.jooq.mcve.java.packages.types.udt.records.TAssociativearrayRowRecord;
 
 
 /**
- * Convenience access to all stored procedures and functions in PROC_USE_ASSOCIATIVEARRAYS
+ * Convenience access to all stored procedures and functions in
+ * PROC_USE_ASSOCIATIVEARRAYS
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class ProcUseAssociativearrays extends PackageImpl {
@@ -29,12 +30,13 @@ public class ProcUseAssociativearrays extends PackageImpl {
     private static final long serialVersionUID = 1L;
 
     /**
-     * The reference instance of <code>DEVSB.PROC_USE_ASSOCIATIVEARRAYS</code>
+     * The reference instance of <code>MCVE.PROC_USE_ASSOCIATIVEARRAYS</code>
      */
     public static final ProcUseAssociativearrays PROC_USE_ASSOCIATIVEARRAYS = new ProcUseAssociativearrays();
 
     /**
-     * Call <code>DEVSB.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_INOUT_NOCOPY_PARAM</code>
+     * Call
+     * <code>MCVE.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_INOUT_NOCOPY_PARAM</code>
      */
     public static ArrayAsInoutNocopyParam arrayAsInoutNocopyParam(
           Configuration configuration
@@ -50,7 +52,7 @@ public class ProcUseAssociativearrays extends PackageImpl {
     }
 
     /**
-     * Call <code>DEVSB.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_INOUT_PARAM</code>
+     * Call <code>MCVE.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_INOUT_PARAM</code>
      */
     public static ArrayAsInoutParam arrayAsInoutParam(
           Configuration configuration
@@ -66,7 +68,8 @@ public class ProcUseAssociativearrays extends PackageImpl {
     }
 
     /**
-     * Call <code>DEVSB.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_INOUT_PARAM_ROW</code>
+     * Call
+     * <code>MCVE.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_INOUT_PARAM_ROW</code>
      */
     public static ArrayAsInoutParamRow arrayAsInoutParamRow(
           Configuration configuration
@@ -82,7 +85,7 @@ public class ProcUseAssociativearrays extends PackageImpl {
     }
 
     /**
-     * Call <code>DEVSB.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_IN_PARAM</code>
+     * Call <code>MCVE.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_IN_PARAM</code>
      */
     public static BigDecimal arrayAsInParam(
           Configuration configuration
@@ -96,7 +99,7 @@ public class ProcUseAssociativearrays extends PackageImpl {
     }
 
     /**
-     * Call <code>DEVSB.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_IN_PARAM_ROW</code>
+     * Call <code>MCVE.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_IN_PARAM_ROW</code>
      */
     public static BigDecimal arrayAsInParamRow(
           Configuration configuration
@@ -110,7 +113,7 @@ public class ProcUseAssociativearrays extends PackageImpl {
     }
 
     /**
-     * Call <code>DEVSB.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_OUT_PARAM</code>
+     * Call <code>MCVE.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_OUT_PARAM</code>
      */
     public static ArrayAsOutParam arrayAsOutParam(
           Configuration configuration
@@ -124,7 +127,7 @@ public class ProcUseAssociativearrays extends PackageImpl {
     }
 
     /**
-     * Call <code>DEVSB.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_OUT_PARAM_ROW</code>
+     * Call <code>MCVE.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_OUT_PARAM_ROW</code>
      */
     public static ArrayAsOutParamRow arrayAsOutParamRow(
           Configuration configuration
@@ -141,6 +144,6 @@ public class ProcUseAssociativearrays extends PackageImpl {
      * No further instances allowed
      */
     private ProcUseAssociativearrays() {
-        super("PROC_USE_ASSOCIATIVEARRAYS", Devsb.DEVSB);
+        super("PROC_USE_ASSOCIATIVEARRAYS", Mcve.MCVE);
     }
 }

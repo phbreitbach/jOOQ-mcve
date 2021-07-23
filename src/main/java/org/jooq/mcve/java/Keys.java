@@ -13,8 +13,8 @@ import org.jooq.mcve.java.tables.records.McvetestRecord;
 
 
 /**
- * A class modelling foreign key relationships and constraints of tables in 
- * DEVSB.
+ * A class modelling foreign key relationships and constraints of tables in
+ * MCVE.
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Keys {
