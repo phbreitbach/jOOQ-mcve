@@ -13,6 +13,7 @@ import org.jooq.mcve.java.packages.proc_use_associativearrays.ArrayAsOutParam;
 import org.jooq.mcve.java.packages.proc_use_associativearrays.ArrayAsOutParamRow;
 import org.jooq.mcve.java.packages.types.udt.records.TAssociativearrayRecord;
 import org.jooq.mcve.java.packages.types.udt.records.TAssociativearrayRowRecord;
+import org.jooq.mcve.java.tables.records.McvetestRecord;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -24,7 +25,7 @@ public class JavaTest extends AbstractTest {
 
         ArrayAsInParam arrayAsInParamRoutine = new ArrayAsInParam();
         TAssociativearrayRecord trecs /* ;-D */ = new TAssociativearrayRecord();
-        trecs.add("Should come forth in PL/SQL");
+        trecs.put("a", "Should come forth in PL/SQL");
         arrayAsInParamRoutine.setPListe(trecs);
         arrayAsInParamRoutine.execute(ctx.configuration());
         BigDecimal rc = arrayAsInParamRoutine.getPAufrufergebnis();
@@ -48,7 +49,7 @@ public class JavaTest extends AbstractTest {
         BigDecimal rc = arrayAsOutParamRoutine.getPAufrufergebnis();
         assertEquals(0, (int) rc.intValue());
         TAssociativearrayRecord associativeArray = arrayAsOutParamRoutine.getPListe();
-        assertEquals("Kein Fehler wenn das im OUT Parameter zurueckkommt", associativeArray.get(0));
+        assertEquals("Kein Fehler wenn das im OUT Parameter zurueckkommt", associativeArray.get("1"));
     }
 
     @Test
@@ -60,10 +61,10 @@ public class JavaTest extends AbstractTest {
         TAssociativearrayRowRecord associativeArray = arrayAsOutParamRowRoutine.getPListe();
         assertEquals(0, (int) rc.intValue());
         assertEquals(1, associativeArray.size());
-        Struct result = (Struct)associativeArray.get(0);
-        assertEquals(BigDecimal.ONE, result.getAttributes()[0]);
-        assertEquals("ValueOutRow", result.getAttributes()[1]);
-        assertEquals("Kein Fehler wenn das im OUT Parameter zurueckkommt", result.getAttributes()[2]);
+        McvetestRecord mcvetestRecord = associativeArray.get("1");
+        assertEquals(BigDecimal.ONE, mcvetestRecord.getId());
+        assertEquals("ValueOutRow", mcvetestRecord.getValue());
+        assertEquals("Kein Fehler wenn das im OUT Parameter zurueckkommt", mcvetestRecord.getFehlertext());
     }
 
     @Test
@@ -71,7 +72,7 @@ public class JavaTest extends AbstractTest {
         ArrayAsInoutParam arrayAsInoutParamRoutine = new ArrayAsInoutParam();
         arrayAsInoutParamRoutine.setPFehlertext("Should be appended to p_liste.");
         TAssociativearrayRecord trecs /* ;-D */ = new TAssociativearrayRecord();
-        trecs.add("Should come forth in PL/SQL");
+        trecs.put("a", "Should come forth in PL/SQL");
         arrayAsInoutParamRoutine.setPListe(trecs);
         arrayAsInoutParamRoutine.execute(ctx.configuration());
         BigDecimal rc = arrayAsInoutParamRoutine.getPAufrufergebnis();
@@ -87,7 +88,7 @@ public class JavaTest extends AbstractTest {
         ArrayAsInoutNocopyParam arrayAsInoutNocopyParamRoutine = new ArrayAsInoutNocopyParam();
         arrayAsInoutNocopyParamRoutine.setPFehlertext("Should be appended to p_liste.");
         TAssociativearrayRecord trecs /* ;-D */ = new TAssociativearrayRecord();
-        trecs.add("Should come forth in PL/SQL");
+        trecs.put("a", "Should come forth in PL/SQL");
         arrayAsInoutNocopyParamRoutine.setPListe(trecs);
         arrayAsInoutNocopyParamRoutine.execute(ctx.configuration());
         BigDecimal rc = arrayAsInoutNocopyParamRoutine.getPAufrufergebnis();

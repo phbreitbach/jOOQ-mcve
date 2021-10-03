@@ -10,7 +10,7 @@ import org.jooq.Parameter;
 import org.jooq.impl.AbstractRoutine;
 import org.jooq.impl.Internal;
 import org.jooq.impl.SQLDataType;
-import org.jooq.mcve.java.Devsb;
+import org.jooq.mcve.java.Mcve;
 import org.jooq.mcve.java.packages.ProcUseAssociativearrays;
 import org.jooq.mcve.java.packages.types.udt.records.TAssociativearrayRecord;
 
@@ -24,25 +24,28 @@ public class ArrayAsInoutNocopyParam extends AbstractRoutine<java.lang.Void> {
     private static final long serialVersionUID = 1L;
 
     /**
-     * The parameter <code>DEVSB.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_INOUT_NOCOPY_PARAM.P_FEHLERTEXT</code>.
+     * The parameter
+     * <code>MCVE.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_INOUT_NOCOPY_PARAM.P_FEHLERTEXT</code>.
      */
     public static final Parameter<String> P_FEHLERTEXT = Internal.createParameter("P_FEHLERTEXT", SQLDataType.VARCHAR, false, false);
 
     /**
-     * The parameter <code>DEVSB.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_INOUT_NOCOPY_PARAM.P_AUFRUFERGEBNIS</code>.
+     * The parameter
+     * <code>MCVE.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_INOUT_NOCOPY_PARAM.P_AUFRUFERGEBNIS</code>.
      */
     public static final Parameter<BigDecimal> P_AUFRUFERGEBNIS = Internal.createParameter("P_AUFRUFERGEBNIS", SQLDataType.NUMERIC, false, false);
 
     /**
-     * The parameter <code>DEVSB.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_INOUT_NOCOPY_PARAM.P_LISTE</code>.
+     * The parameter
+     * <code>MCVE.PROC_USE_ASSOCIATIVEARRAYS.ARRAY_AS_INOUT_NOCOPY_PARAM.P_LISTE</code>.
      */
-    public static final Parameter<TAssociativearrayRecord> P_LISTE = Internal.createParameter("P_LISTE", SQLDataType.VARCHAR(240).asArrayDataType(org.jooq.mcve.java.packages.types.udt.records.TAssociativearrayRecord.class), false, false);
+    public static final Parameter<TAssociativearrayRecord> P_LISTE = Internal.createParameter("P_LISTE", SQLDataType.VARCHAR(240).asAssociativeArrayDataType(org.jooq.mcve.java.packages.types.udt.records.TAssociativearrayRecord.class), false, false);
 
     /**
      * Create a new routine call instance
      */
     public ArrayAsInoutNocopyParam() {
-        super("ARRAY_AS_INOUT_NOCOPY_PARAM", Devsb.DEVSB, ProcUseAssociativearrays.PROC_USE_ASSOCIATIVEARRAYS);
+        super("ARRAY_AS_INOUT_NOCOPY_PARAM", Mcve.MCVE, ProcUseAssociativearrays.PROC_USE_ASSOCIATIVEARRAYS);
 
         addInParameter(P_FEHLERTEXT);
         addOutParameter(P_AUFRUFERGEBNIS);
@@ -64,7 +67,8 @@ public class ArrayAsInoutNocopyParam extends AbstractRoutine<java.lang.Void> {
     }
 
     /**
-     * Get the <code>P_AUFRUFERGEBNIS</code> parameter OUT value from the routine
+     * Get the <code>P_AUFRUFERGEBNIS</code> parameter OUT value from the
+     * routine
      */
     public BigDecimal getPAufrufergebnis() {
         return get(P_AUFRUFERGEBNIS);

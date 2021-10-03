@@ -12,8 +12,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- TODO: Change your jOOQ edition and version here -->
-        <org.jooq.groupId>org.jooq.trial-java-8</org.jooq.groupId>
-        <org.jooq.version>3.14.8</org.jooq.version>
+        <org.jooq.groupId>org.jooq.trial</org.jooq.groupId>
+        <org.jooq.version>3.16.0-SNAPSHOT</org.jooq.version>
 
         <!-- TODO: Change the database driver configuration here and also in AbstractTest for the tests -->
         <ojdbc.version>21.1.0.0</ojdbc.version>
@@ -27,7 +27,10 @@
         <jooq.dateAsTimestamp>false</jooq.dateAsTimestamp>
         <jooq.database.name>org.jooq.meta.oracle.OracleDatabase</jooq.database.name>
 
-        <java.version>11</java.version>
+        <java.version>16</java.version>
+        <db.url>jdbc:oracle:thin:@localhost:1521:xe</db.url>
+        <db.username>MCVE</db.username>
+        <db.password>MCVE</db.password>
     </properties>
 
     <dependencies>

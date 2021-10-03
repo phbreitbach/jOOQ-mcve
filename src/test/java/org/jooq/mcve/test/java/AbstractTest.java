@@ -16,10 +16,7 @@ public abstract class AbstractTest {
     @Before
     public void setup() throws Exception {
 
-        String user = System.getProperty("db.username");
-        String pw = System.getProperty("db.password");
-        String url = System.getProperty("db.url");
-        connection = DriverManager.getConnection(url, user, pw);
+        connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "MCVE", "MCVE");
         ctx = DSL.using(connection);
     }
 
